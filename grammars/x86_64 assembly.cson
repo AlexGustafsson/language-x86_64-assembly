@@ -84,7 +84,7 @@ repository:
   entities:
     patterns: [
       {
-        match: "((section|segment)\\s+)?\\.((ro)?data|bss|text)"
+        match: "((section|segment)\\s+)?\\.((ro)?data|bss|text|global)"
         name: "entity.name.section"
       }
       {
@@ -184,7 +184,7 @@ repository:
       }
     ]
   "mnemonics-64bit":
-    match: "\\b(cdqe|cqo|(cmp|lod|mov|sto)sq|cmpxchg16b|mov(ntq|sxd)|scasq|swapgs|sys(call|ret))\\b"
+    match: "\\b(cdqe|cqo|(cmp|lod|mov|sto)s?q|cmpxchg16b|mov(ntq|sxd|zb[wq]?)|scasq|swapgs|sys(call|ret))\\b"
     name: "keyword.mnemonic.64-bit-mode"
   "mnemonics-aesni":
     match: "\\b(aes((dec|enc)(last)?|imc|keygenassist)|pclmulqdq)\\b"
@@ -220,7 +220,7 @@ repository:
         name: "keyword.mnemonic.avx.promoted.mov"
       }
       {
-        match: "\\b(v((add|div|mul|sub|max|min|round|sqrt)[ps][ds]|(addsub|dp)p[ds]|(rcp|rsqrt)[ps]s))\\b"
+        match: "\\b(v((add|i?div|i?mul|sub|max|min|round|sqrt)[ps][ds]|(addsub|dp)p[ds]|(rcp|rsqrt)[ps]s))\\b"
         name: "keyword.mnemonic.avx.promoted.packed-arithmetic"
       }
       {
@@ -440,11 +440,11 @@ repository:
         name: "keyword.mnemonic.general-purpose.data-transfer.xchg"
       }
       {
-        match: "\\b((push|pop)(ad?)?|cwde?|cdq|cbw)\\b"
+        match: "\\b((push|pop)(ad?)?|cwde?|cdq|cbw|(push|pop)[wq])\\b"
         name: "keyword.mnemonic.general-purpose.data-transfer.other"
       }
       {
-        match: "\\b(adcx?|adox|add|sub|sbb|i?mul|i?div|inc|dec|neg|cmp)\\b"
+        match: "\\b(adcx?|adox|add|sub|sbb|i?mul|i?div|inc|dec|neg|cmp)[wq]?\\b"
         name: "keyword.mnemonic.general-purpose.binary-arithmetic"
       }
       {
@@ -1025,7 +1025,7 @@ repository:
   support:
     patterns: [
       {
-        match: "(?i)\\b(s?byte|([doqtyz]|dq|s[dq]?)?word|(d|res)[bdoqtwyz]?|ddq|incbin|equ|times|(end|i)?struc|at|iend)\\b"
+        match: "(?i)\\b(s?byte|([doqtyz]|dq|s[dq]?)?word|(d|res)[bdoqtwyz]?|ddq|incbin|equ|times|(end|i)?struc|at|iend|quad|space)\\b"
         name: "support.type.asm"
       }
       {

@@ -1,3 +1,10 @@
+## 2.2.12
+Further support for 64-bit AT&T syntax
+* q and w postfix for mov, cmp, push, pop etc.
+* support for the datatypes quad and space
+* support global labels
+* support for integer counterparts of div and mul
+
 ## 2.2.11
 Better support for datatypes
 * signed types (non-nasm)
